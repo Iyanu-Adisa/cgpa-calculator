@@ -1,0 +1,591 @@
+/* --- GLOBAL VARIABLES --- */
+:root {
+  --bg-light: #f3f4f6;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
+  --primary-grad: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+  --card-glass: rgba(255, 255, 255, 0.85);
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  margin: 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* --- ANIMATED BACKGROUND --- */
+.app-wrapper {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -1;
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+.blob-1 {
+  top: -10%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: rgba(59, 130, 246, 0.4); /* Soft Blue */
+}
+
+.blob-2 {
+  bottom: -10%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: rgba(139, 92, 246, 0.3); /* Soft Purple */
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    transform: translate(30px, 50px) scale(1.1);
+  }
+}
+
+/* --- LAYOUT & HEADER --- */
+.app-container {
+  width: 100%;
+  max-width: 900px;
+  z-index: 1;
+}
+
+.premium-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 1.2rem 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  margin-bottom: 2rem;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  font-size: 1.8rem;
+}
+
+.premium-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.text-gradient {
+  background: var(--primary-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.scale-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.scale-selector select {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.scale-selector select:hover {
+  border-color: #3b82f6;
+}
+
+/* --- DASHBOARD HERO --- */
+.dashboard {
+  background: var(--card-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+
+.hero-section h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0 0 10px 0;
+  letter-spacing: -1px;
+}
+
+.hero-section p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  max-width: 500px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.5;
+}
+
+.empty-state {
+  padding: 2rem;
+  border: 2px dashed #d1d5db;
+  border-radius: 16px;
+  margin-bottom: 2.5rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* --- PREMIUM BUTTON --- */
+.premium-btn {
+  background: var(--primary-grad);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+}
+
+.premium-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(59, 130, 246, 0.4);
+}
+
+.btn-icon {
+  font-size: 1.4rem;
+  line-height: 0;
+}
+
+/* --- ENTRY ANIMATIONS --- */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-up {
+  opacity: 0;
+  animation: slideUp 0.8s ease-out 0.2s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* --- SEMESTER CONTAINERS --- */
+.semesters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.semester-placeholder {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid #e5e7eb;
+}
+
+/* --- SEMESTER CARD --- */
+.semester-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid #e5e7eb;
+}
+
+.semester-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.semester-title-input {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main);
+  border: none;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  background: transparent;
+  transition: border-color 0.2s;
+  width: 60%;
+}
+
+.semester-title-input:focus {
+  border-bottom: 2px solid #3b82f6;
+}
+
+.delete-btn {
+  background: #fee2e2;
+  color: #ef4444;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  background: #fca5a5;
+  transform: scale(1.05);
+}
+
+.add-course-btn {
+  background: #f9fafb;
+  color: var(--text-muted);
+  border: 2px dashed #d1d5db;
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+
+.add-course-btn:hover {
+  background: #f3f4f6;
+  border-color: #9ca3af;
+  color: var(--text-main);
+}
+
+.semester-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  text-align: right;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+}
+
+.gpa-highlight {
+  color: #10b981; /* Emerald Green for success */
+  font-size: 1.4rem;
+  margin-left: 5px;
+}
+
+/* --- COURSE ROWS --- */
+.courses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.course-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.course-input {
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.2s ease;
+  background: #f9fafb;
+}
+
+.course-input:focus {
+  border-color: #3b82f6;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.code-input {
+  flex-grow: 1; /* Makes the course code field take up the most space */
+}
+
+.remove-course-btn {
+  background: transparent;
+  color: #9ca3af;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.remove-course-btn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+/* --- GLOBAL SUMMARY CARD --- */
+.global-summary-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.summary-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  padding-left: 2rem;
+  border-left: 2px solid #f3f4f6;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.download-btn {
+  background: #10b981; /* Emerald Green */
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.download-btn:hover {
+  background: #059669;
+  transform: translateY(-2px);
+}
+
+/* --- PDF EXPORT CLEANUP --- */
+/* When exporting, we hide interactive buttons so the PDF looks like a clean transcript */
+.exporting-pdf .delete-btn,
+.exporting-pdf .remove-course-btn,
+.exporting-pdf .add-course-btn,
+.exporting-pdf .download-btn {
+  display: none !important;
+}
+
+.exporting-pdf .course-input,
+.exporting-pdf .semester-title-input {
+  border: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Fix the blue block gradient bug for the PDF export */
+.exporting-pdf .text-gradient {
+  background: none !important;
+  -webkit-text-fill-color: var(--text-main) !important;
+  color: var(--text-main) !important;
+}
+
+/* --- RESPONSIVE DESIGN (TABLET & MOBILE) --- */
+@media screen and (max-width: 768px) {
+  .app-wrapper {
+    padding: 1rem 0.5rem;
+  }
+
+  .premium-header {
+    flex-direction: column;
+    gap: 1.2rem;
+    padding: 1.5rem;
+  }
+
+  .scale-selector {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dashboard {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero-section h2 {
+    font-size: 1.5rem;
+  }
+
+  /* --- HIGH-END MOBILE SUMMARY CARD --- */
+  .global-summary-card {
+    flex-direction: column;
+    padding: 2rem 1.2rem;
+    gap: 2rem;
+  }
+
+  .summary-stats {
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    gap: 0;
+  }
+
+  .stat-box {
+    align-items: center; /* Centers the numbers beautifully */
+    width: 50%;
+  }
+
+  .stat-value {
+    font-size: 2.2rem;
+  }
+
+  .divider {
+    padding-left: 0;
+    padding-top: 0;
+    border-top: none;
+    border-left: 1px solid #e5e7eb; /* Brings back a subtle, clean divider */
+  }
+
+  /* Sleek, proportional pill button */
+  .download-btn {
+    width: 80%;
+    max-width: 260px;
+    justify-content: center;
+    border-radius: 50px;
+    padding: 1rem;
+  }
+
+  /* --- REFINED MOBILE SEMESTER CARD --- */
+  .semester-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .semester-title-input {
+    width: calc(100% - 40px);
+    font-size: 1.1rem;
+  }
+
+  /* Force the course inputs to stay on a SINGLE horizontal line */
+  .course-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 5px; /* Tighter gap between inputs */
+    padding: 0;
+    background: transparent;
+    border: none;
+  }
+
+  .course-input {
+    padding: 0.7rem 0.3rem; /* Slimmer padding inside the boxes */
+    font-size: 0.85rem; /* Slightly smaller text so it fits the screen */
+  }
+
+  .code-input {
+    flex-grow: 1;
+    width: 42%; /* Ensures the course code box gets the largest share of space */
+  }
+
+  select.course-input {
+    width: 22%; /* Keeps the dropdowns compact */
+    padding: 0.7rem 0.1rem; /* Very tight inner padding for the dropdown arrow */
+  }
+
+  .remove-course-btn {
+    background: transparent;
+    color: #9ca3af;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+  }
+
+  /* Keeps the button compact and perfectly sized for mobile */
+  .premium-btn {
+    padding: 0.8rem 2rem; /* Slightly thinner padding */
+    font-size: 1rem; /* Slightly smaller text */
+  }
+}
