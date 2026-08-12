@@ -133,9 +133,7 @@ function App() {
                   <span className="stat-value">{globalData.totalUnits}</span>
                 </div>
               </div>
-              <button className="download-btn" onClick={downloadTranscript}>
-                <Download size={18} /> Export PDF
-              </button>
+              {/* Download button removed from here and moved to bottom */}
             </div>
 
             {/* --- SEMESTERS LIST --- */}
@@ -144,7 +142,6 @@ function App() {
                 <p>Your record is empty. Let's get started.</p>
               </div>
             ) : (
-              /* Notice the ID is removed from here because it is now on the wrapper above */
               <div className="semesters-container">
                 {data.semesters.map((semester) => (
                   <SemesterCard
@@ -160,9 +157,18 @@ function App() {
           </div>
           {/* --- END OF EXPORT WRAPPER --- */}
 
-          <button onClick={addSemester} className="premium-btn pulse-hover">
-            <span className="btn-icon">+</span> Add New Semester
-          </button>
+          {/* --- BOTTOM ACTION BUTTONS --- */}
+          <div className="bottom-action-buttons">
+            <button onClick={addSemester} className="premium-btn pulse-hover">
+              <span className="btn-icon">+</span> Add New Semester
+            </button>
+
+            {data.semesters.length > 0 && (
+              <button className="download-btn" onClick={downloadTranscript}>
+                <Download size={18} /> Export PDF
+              </button>
+            )}
+          </div>
         </main>
       </div>
     </div>

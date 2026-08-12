@@ -182,6 +182,7 @@ body {
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
   transition: all 0.3s ease;
@@ -226,6 +227,7 @@ body {
     transform: translateY(0);
   }
 }
+
 /* --- SEMESTER CONTAINERS --- */
 .semesters-container {
   display: flex;
@@ -428,24 +430,36 @@ body {
   line-height: 1.2;
 }
 
+/* --- BOTTOM ACTION BUTTONS --- */
+.bottom-action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
 .download-btn {
   background: #10b981; /* Emerald Green */
   color: white;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  transition: all 0.2s;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
 }
 
 .download-btn:hover {
   background: #059669;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 25px rgba(16, 185, 129, 0.4);
 }
 
 /* --- PDF EXPORT CLEANUP --- */
@@ -453,7 +467,7 @@ body {
 .exporting-pdf .delete-btn,
 .exporting-pdf .remove-course-btn,
 .exporting-pdf .add-course-btn,
-.exporting-pdf .download-btn {
+.exporting-pdf .bottom-action-buttons {
   display: none !important;
 }
 
@@ -528,15 +542,6 @@ body {
     border-left: 1px solid #e5e7eb; /* Brings back a subtle, clean divider */
   }
 
-  /* Sleek, proportional pill button */
-  .download-btn {
-    width: 80%;
-    max-width: 260px;
-    justify-content: center;
-    border-radius: 50px;
-    padding: 1rem;
-  }
-
   /* --- REFINED MOBILE SEMESTER CARD --- */
   .semester-card {
     padding: 1.5rem 1rem;
@@ -583,9 +588,17 @@ body {
     margin-top: 0;
   }
 
-  /* Keeps the button compact and perfectly sized for mobile */
-  .premium-btn {
-    padding: 0.8rem 2rem; /* Slightly thinner padding */
-    font-size: 1rem; /* Slightly smaller text */
+  /* --- BOTTOM ACTION BUTTONS MOBILE --- */
+  .bottom-action-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .bottom-action-buttons .premium-btn,
+  .bottom-action-buttons .download-btn {
+    width: 100%;
+    max-width: 320px;
+    padding: 1rem;
+    font-size: 1rem;
   }
 }
